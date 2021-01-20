@@ -1,4 +1,4 @@
-package main
+package tests
 
 import (
 	"bufio"
@@ -8,9 +8,9 @@ import (
 	"github.com/Mrod1598/dolls/dolldelivery"
 )
 
-func main() {
-	const start = "Brian's apartment"
-	const end = "Greg's casa"
+func Test2() {
+	const start = "Brian's apartnt"
+	const end = "Mike's digs"
 	distance, path := dolldelivery.GoFindShortestPath(start, end, dolldelivery.Neighborhood)
 	if len(path) > 0 {
 		fmt.Println("Minimum distance: ", distance)
