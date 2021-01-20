@@ -8,6 +8,7 @@ import (
 	"github.com/Mrod1598/dolls/dolldelivery"
 )
 
+//Test4 a direct path
 func Test4() {
 	const start = "Kruthika's abode"
 	const end = "Matt's pad"

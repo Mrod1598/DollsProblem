@@ -8,6 +8,7 @@ import (
 	"github.com/Mrod1598/dolls/dolldelivery"
 )
 
+//Test5 tests another basic path
 func Test5() {
 	const start = "Brian's apartment"
 	const end = "Greg's casa"

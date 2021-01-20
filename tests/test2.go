@@ -8,6 +8,7 @@ import (
 	"github.com/Mrod1598/dolls/dolldelivery"
 )
 
+//Test2 tests error handling
 func Test2() {
 	const start = "Brian's apartnt"
 	const end = "Mike's digs"
