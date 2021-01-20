@@ -25,6 +25,4 @@ func main() {
 
 	fmt.Println("test5:")
 	tests.Test5()
-	fmt.Printf("\n\n")
-
 }
