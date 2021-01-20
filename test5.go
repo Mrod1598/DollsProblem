@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	const start = "Brian's apartnt"
-	const end = "Mike's digs"
+	const start = "Brian's apartment"
+	const end = "Greg's casa"
 	distance, path := dolldelivery.GoFindShortestPath(start, end, dolldelivery.Neighborhood)
 	if len(path) > 0 {
-		fmt.Println("Minimum distance:", distance)
+		fmt.Println("Minimum distance: ", distance)
 		fmt.Printf("%s ", path[0])
 		for i := 1; i < len(path); i++ {
 			fmt.Printf("===> %s ", path[i])

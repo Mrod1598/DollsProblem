@@ -1,5 +1,12 @@
 ## to run the program change the directory name "github.com/Mrod1598/dolls/dolldelivery" to the proper route
 
+## test 1: tests a basic path
+
+## test 2-3 tests error handling
+
+## test 4 a direct path
+
+## test 5 tests another basic path
 ## Totally Credible Backstory
 
 You are a nice old lady who delivers porcelain dolls on foot using your walker to residents in a neighborhood. Every day a nice young man fills your handbag with porcelain dolls and drops you off in a new neighborhood. There's nothing weird about these dolls. They are just normal dolls.

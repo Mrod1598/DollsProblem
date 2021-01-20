@@ -33,7 +33,6 @@ var GoFindShortestPath = PathFinder(func(startLocation, targetLocation string, s
 	}
 
 	prev, dist := Dijkstra(streets, startLocation, unqHomes)
-
 	if dist[targetLocation] == infinity {
 		fmt.Println("target Unreachable!")
 		return dist[targetLocation], path
@@ -65,6 +64,7 @@ func Dijkstra(neighborhood []Street, startLocation string, unqHomes []string) (m
 	for _, home := range unqHomes {
 		visited[home] = false
 		dist[home] = infinity
+		prev[home] = ""
 	}
 
 	//init priority queue
@@ -81,26 +81,57 @@ func Dijkstra(neighborhood []Street, startLocation string, unqHomes []string) (m
 	for pq.Len() != 0 {
 		//get next item in Queue
 		currentItem := pq.Pop().(*Item)
-		visited[currentItem.Value] = true
 
+		visited[currentItem.Value] = true
+		if dist[currentItem.Value] < currentItem.Priority {
+			continue
+		}
 		//get all the neighbors connected to current home (node)
 		for _, street := range neighborhood {
 			//skip item if we've visited the home before or if it's not connected to the our current home.
-			if street.From != currentItem.Value || visited[street.To] {
+			if street.From != currentItem.Value && street.To != currentItem.Value {
 				continue
 			}
 
 			//calculate the distance from current home to the next home and see if it's lower than the current distance we already have for it
-			newDist := dist[currentItem.Value] + street.Distance
-			if newDist < dist[street.To] {
-				prev[street.To] = currentItem.Value
-				dist[street.To] = newDist
+			//this is broken into two seperate if statements because of the need to check if it's connected to the the from or the to part
+			//of the street
 
-				newItem := &Item{
-					Value:    street.To,
-					Priority: 0,
+			if street.To == currentItem.Value {
+				if visited[street.From] {
+					continue
 				}
-				pq.Push(newItem)
+
+				newDist := dist[currentItem.Value] + street.Distance
+
+				if newDist < dist[street.From] {
+					prev[street.From] = currentItem.Value
+					dist[street.From] = newDist
+
+					newItem := &Item{
+						Value:    street.From,
+						Priority: newDist,
+					}
+					pq.Push(newItem)
+				}
+			} else if street.From == currentItem.Value {
+				if visited[street.To] {
+					continue
+				}
+
+				newDist := dist[currentItem.Value] + street.Distance
+
+				if newDist < dist[street.To] {
+					prev[street.To] = currentItem.Value
+					dist[street.To] = newDist
+
+					newItem := &Item{
+						Value:    street.To,
+						Priority: newDist,
+					}
+
+					pq.Push(newItem)
+				}
 			}
 		}
 	}
